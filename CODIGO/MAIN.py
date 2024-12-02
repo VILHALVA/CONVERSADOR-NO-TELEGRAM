@@ -65,6 +65,13 @@ def handle_error_mode(message):
         bot.send_chat_action(message.chat.id, "typing")
         bot.reply_to(message, "🤬Infelizmente, não entendo o que dizes!")
 
+def get_start_markup():
+    markup = telebot.types.InlineKeyboardMarkup()
+    button1 = telebot.types.InlineKeyboardButton(text="🧑‍💻CRIADOR", url="https://t.me/VILHALVA100")
+    button2 = telebot.types.InlineKeyboardButton(text="📢CANAL", url="https://t.me/VILHALVA100_CANAL")
+    markup.add(button1, button2)
+    return markup
+
 @bot.message_handler(commands=['start'])
 def handle_start(message):
     bot.send_chat_action(message.chat.id, "typing")
@@ -75,7 +82,7 @@ def handle_start(message):
                "- o que você pode fazer?\n" \
                "- tchau..."
     
-    bot.send_message(message.chat.id, response)
+    bot.send_message(message.chat.id, response, reply_markup=get_start_markup())
 
 @bot.message_handler(func=lambda message: should_respond(message))
 def handle_message(message):

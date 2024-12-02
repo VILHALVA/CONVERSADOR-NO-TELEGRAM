@@ -12,16 +12,32 @@ Por sua vez, o arquivo "CONFIG.json" define o comportamento do bot. Nele, as con
 
 O bot é capaz de compreender palavras-chave em uma frase completa, o que significa que não é necessário que a mensagem do usuário consista apenas na palavra-chave, mas pode ser uma parte dela dentro de uma frase. 
 
-1. **Respostas a Perguntas Básicas:**
-   - O bot pode responder a uma variedade de perguntas básicas, como nome, como está, o que pode fazer, entre outras.
-   - Ele também pode fornecer piadas, curiosidades e recomendações sobre uma variedade de tópicos.
+## FUNCIONALIDADES:
+1. **Respostas a Perguntas Comuns:**
+   - O bot é capaz de responder a perguntas simples, como "qual é o seu nome?", "como você está?", "o que você pode fazer?", e saudações como "oi" e "tchau".
+   - Além disso, pode fornecer respostas sobre tópicos como programação, ciência, tecnologia, entre outros.
 
-2. **Gerenciamento de Respostas:**
-   - Se uma mensagem do usuário não corresponder a nenhuma resposta pré-definida, o bot pode solicitar ao usuário que forneça uma resposta para ser adicionada ao banco de dados.
-   - Essa funcionalidade é controlada pelas configurações no arquivo "CONFIG.json".
+2. **Gerenciamento Dinâmico de Respostas:**
+   - Se uma mensagem não corresponder a nenhuma resposta pré-definida, e o modo de erro e criação estiverem habilitados no arquivo "CONFIG.json", o bot solicitará ao usuário que forneça uma resposta para ser adicionada ao banco de dados.
+   - Ao receber uma entrada no formato correto (`PALAVRA CHAVE: RESPOSTA`), o bot armazena a nova palavra-chave no arquivo "WORD.json" e reinicia para aplicar a nova configuração.
 
-3. **Erro de Mensagem não Compreendida:**
-   - Se o bot não entender a mensagem do usuário, ele enviará uma mensagem indicando que não compreendeu e oferecerá orientações para reenviar a mensagem seguindo um formato específico.
+3. **Configurações Avançadas via "CONFIG.json":**
+   - O comportamento do bot é definido por configurações como:
+     - **"SEMPRE"**: Define se o bot deve responder sempre, independentemente do tipo de chat.
+     - **"CRIAR"**: Habilita ou desabilita a funcionalidade de adicionar novas respostas.
+     - **"ERRO"**: Controla se o bot deve enviar mensagens de erro quando não entende a entrada do usuário.
+
+4. **Reconhecimento de Palavras-chave em Frases:**
+   - O bot é capaz de identificar palavras-chave dentro de uma frase completa, permitindo maior flexibilidade na forma como o usuário interage.
+   - Mesmo que a palavra-chave não seja a única palavra na frase, o bot pode reconhecer e fornecer a resposta correspondente.
+
+5. **Tratamento de Mensagens Não Compreendidas:**
+   - Se o bot não entender a mensagem, ele pode, dependendo das configurações, sugerir que o usuário siga o formato específico para adicionar uma nova palavra-chave ou simplesmente informar que não entendeu.
+   - Se a funcionalidade de criação estiver ativa, o bot solicitará uma entrada formatada para adicionar novas palavras e respostas.
+
+6. **Comandos Iniciais e Marcações:**
+   - O comando `/start` é utilizado para iniciar o bot, enviando uma mensagem de boas-vindas e apresentando ao usuário algumas opções de interação.
+   - O bot também apresenta botões inline com links para o canal e o criador, utilizando o `InlineKeyboardMarkup` do Telegram.
 
 ## COMO USAR?
 1. **Instale as bibliotecas necessárias:** Antes de executar o bot, certifique-se de instalar todas as dependências necessárias. No terminal, execute o seguinte comando para instalar as dependências listadas no arquivo requirements.txt em `CODIGO`:
